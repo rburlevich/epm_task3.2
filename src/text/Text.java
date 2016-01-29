@@ -65,12 +65,7 @@ public class Text {
 	}
 
 	/**
-	 * This method find a word in a sentence
-	 * @param
-	 * 1. String - a word which need find
-	 * 2. Number of sentence in which find word
-	 *
-	 * */
+	 * This method find a word in a sentence  */
 	public boolean findOfWord(String word, int i){
 		if(listOfSentences.size()>=i){
 			ArrayList<String> listOfWords = new ArrayList<>();
@@ -128,8 +123,8 @@ public class Text {
 	public void test1(){
 		ArrayList<String> newListOfSent = new ArrayList();
 		for (String str : listOfSentences){
-			if (str.charAt(str.length()-1)!='?'){ // If sentense doen't ends with '?' - add this sentense to the newListOfSent
-				newListOfSent.add(str);           // eslse need modify this sentense
+			if (str.charAt(str.length()-1)!='?'){ // If sentence doesn't ends with '?' - add this sentence to the newListOfSent
+				newListOfSent.add(str);           // else need modify this sentence
 			} else {
 				ArrayList<String> listOfWords = Word.cutWords(str);          // Cutting of words
 				ArrayList<StringBuffer> listOfStrBufWords = new ArrayList(); // List of stringBuffer words
@@ -138,13 +133,13 @@ public class Text {
 					for (int i=1; i<=strBufWord.length()-1; i++){   // Deleting of letters from word
 						if (strBufWord.charAt(i)==strBufWord.charAt(0)){
 							strBufWord.deleteCharAt(i);
-							i=i-1;
+							i--;
 						}
 					}
 					listOfStrBufWords.add(strBufWord); // Adding of word to list of stringBuffer words
 				}
 				StringBuffer string = new StringBuffer(""); // Creating of empty stringBuffer
-				for (StringBuffer strt4 : listOfStrBufWords){  // Creating of sentense from words
+				for (StringBuffer strt4 : listOfStrBufWords){  // Creating of sentence from words
 					string.append(strt4 + " ");
 				}
 				string.deleteCharAt(string.length()-3); // Cut space before '?'
@@ -180,7 +175,7 @@ public class Text {
 		for (String word : listOfwordsSent1){
 			for (String word2 : listOfwordsAnotherSent){
 				if(word.toLowerCase().equals(word2.toLowerCase())){
-					listOfReapeatedWords.add(word2);
+					listOfReapeatedWords.add(word2.toLowerCase());
 				}
 			}
 		}
@@ -188,6 +183,7 @@ public class Text {
 			for (int y=1;y<=listOfReapeatedWords.size()-1;y++){
 				if(x!=y & listOfReapeatedWords.get(x).equals(listOfReapeatedWords.get(y))){
 					listOfReapeatedWords.remove(y);
+					y--;
 				}
 			}
 		}
